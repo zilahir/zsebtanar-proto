@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Button } from 'client-common/component/general/Button'
+import { Icon } from 'client-common/component/general/Icon'
 
 import './ClassPage.scss'
 
@@ -19,6 +20,14 @@ class ClassManage extends React.Component<{}> {
             email: this.state.invitee
         }
         console.debug('newInviteObject', newInviteObject)
+    }
+
+    handleAction(action, payload) {
+        switch(action) {
+            case 'edit': {
+                console.debug('edit', payload)
+            }
+        }
     }
 
     render() {
@@ -49,6 +58,41 @@ class ClassManage extends React.Component<{}> {
                             >
                                 Meghívás
                             </Button>
+                        </div>
+                        <div className="student-list">
+                            <table className="table table-hover table mt-3 student-list-table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Név</th>
+                                        <th>Email</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                            <tbody>
+                                {
+                                    Array(10).fill(10).map((c, i) => (
+                                        <tr>
+                                            <td key={i}>{i + 1}</td>
+                                            <td>
+                                                {`Név ${i + 1}`}
+                                            </td>
+                                            <td>
+                                                {`diak-${i}@gmail.com`}
+                                            </td>
+                                            <td className="actions">
+                                                <p
+                                                    onClick={() => this.handleAction('edit', {studentId: i})}
+                                                >
+                                                    <Icon fa="pencil" />
+                                                </p>
+                                                <Icon fa="times" />
+                                            </td>
+                                        </tr>
+                                    ))
+                                }
+                            </tbody>
+                        </table>
                         </div>
                     </div>
                 </div>

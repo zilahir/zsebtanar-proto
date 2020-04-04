@@ -31,9 +31,9 @@
     }
 }
 
-.classroom-list {
+.classroom-list, .student-list {
     padding: 40px 0;
-    .class-list-table {
+    .class-list-table, .student-list-table {
         .actions {
             display: flex;
             justify-content: space-around;
