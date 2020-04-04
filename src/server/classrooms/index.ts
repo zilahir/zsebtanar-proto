@@ -1,13 +1,22 @@
 import * as express from 'express'
 import { errorHandler } from '../utils/error'
 
+import { admin } from '../utils/firebase'
 export const route = express.Router()
+const DB = admin.database()
+const ClassRooms = DB.ref('classrooms/')
 
-route.post('/insert', [
-	errorHandler((req, res) => {
+route.post('/insert',
+	(req, res) => {
 		const body = req.body
+		ClassRooms.set({
+			1: {
+				name: body.name,
+				ownerId: body.ownerId,
+			}
+		})
 		res.status(200).send({
 			success: true
 		})
-	})
-])
+	}
+)

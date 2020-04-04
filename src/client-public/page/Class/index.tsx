@@ -1,16 +1,34 @@
 import * as React from 'react'
 import classnames from 'classnames'
-import { History } from 'history'
+import { withRouter } from 'react-router'
+import { connect } from 'react-redux'
+import { RouteComponentProps } from 'react-router'
 
 import { Icon } from 'client-common/component/general/Icon'
 import './ClassPage.scss'
 import { Button } from 'client-common/component/general/Button'
+import { createNewClassRoom } from 'client-common/services/classroom'
+import pipe from 'ramda/es/pipe'
 
 interface ClassPageProps {
-    history: History
+    session: state.Session
 }
 
-class ClassPage extends React.Component<ClassPageProps> {
+const mapStateToProps = (state: state.Root) => ({
+    session: state.app.session
+})
+
+type AllProps = ClassPageProps & RouteComponentProps<{}>
+
+
+export const ClassPage = pipe(
+    withRouter,
+    connect<ClassPageProps, {}, RouteComponentProps<{}>>(
+        mapStateToProps,
+        null,
+    )
+)(
+    class ClassPage extends React.Component<AllProps> {
     state = {
         isNewClassFormVisible: false,
         className: null,
@@ -30,7 +48,12 @@ class ClassPage extends React.Component<ClassPageProps> {
     }
 
     creteNewClassRoom() {
-        alert("creating new classroom")
+        const newClassObject = {
+            name: this.state.className,
+            ownerId: this.props.session.user.uid
+        }
+        console.debug('newClassObject', newClassObject)
+        createNewClassRoom(newClassObject)
     }
 
     handleAction(action, payload) {
@@ -124,7 +147,6 @@ class ClassPage extends React.Component<ClassPageProps> {
                 </div>
             </div>
             )
+        }
     }
-}
-
-export default ClassPage
+)
