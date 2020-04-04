@@ -76,7 +76,7 @@ class ExamPage extends React.Component<{}> {
                                 <th>#</th>
                                 <th>Feladatok</th>
                                 <th>Létrehozva</th>
-																<th>Határidő</th>
+                                <th>Határidő</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>

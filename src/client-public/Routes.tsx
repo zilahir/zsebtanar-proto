@@ -23,6 +23,7 @@ import { CookieConsent } from './component/CookieConsent'
 import ClassPage from './page/Class'
 import ExamPage from './page/Exam'
 import ClassManage from './page/Class/Manage'
+import ExamManage from './page/Exam/Manage'
 
 interface RoutersProps {
   history: History
@@ -74,6 +75,7 @@ const App = props => () => {
           <Route path="/classes" component={ClassPage} />
           <Route path="/class/:class" component={ClassManage} />
           <Route path="/exams" component={ExamPage} />
+          <Route path="/exam/:exam" component={ExamManage} />
           <Route path="/search" component={Search} />
           <Route path="/about" component={About} />
           <Route path="/joinus" component={JoinUs} />
