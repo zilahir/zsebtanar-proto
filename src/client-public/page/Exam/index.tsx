@@ -1,6 +1,7 @@
 import * as React from 'react'
 import classnames from 'classnames'
 import { History } from 'history'
+import DatePicker from "react-datepicker"
 
 import { Icon } from 'client-common/component/general/Icon'
 import './Exam.scss'
@@ -73,6 +74,14 @@ class ExamPage extends React.Component<ExamPageProps> {
                                 >
                                 <option value="osztaly1">Osztály #1</option>
                                 </select>
+                            </div>
+                            <div className="oneInput">
+                              <DatePicker
+                                selected={null}
+                                onChange={null}
+                                showTimeSelect
+                                dateFormat="Pp"
+                                />
                             </div>
                             <div className="submit-container">
                                 <Button
