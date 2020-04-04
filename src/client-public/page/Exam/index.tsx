@@ -66,6 +66,14 @@ class ExamPage extends React.Component<ExamPageProps> {
                                     className="form-control"
                                 />
                             </div>
+                            <div className="oneInput">
+                            <select
+                                className="form-control"
+                                onChange={null}
+                                >
+                                <option value="osztaly1">Osztály #1</option>
+                                </select>
+                            </div>
                             <div className="submit-container">
                                 <Button
                                     disabled={!this.state.examName}
