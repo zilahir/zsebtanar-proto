@@ -20,7 +20,6 @@ export const TaskListModal = connect<{}, TaskListModalProps, ui.ModalProps>(mapS
 
 		render() {
 			const props = this.props
-			console.debug('props', this.props)
 			return (
 				<div>
 					<Dialog className="taskList">
