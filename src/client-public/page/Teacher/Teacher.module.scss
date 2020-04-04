@@ -1,3 +1,20 @@
 .teacherWrapper {
     padding: 40px 0;
+    p {
+        &:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    }
+    .newclass-form {
+        &.hidden {
+            display: none;
+        }
+
+        .submit-container {
+            display: flex;
+            justify-content: flex-end;
+            padding: 20px 0;
+        }
+    }
 }
