@@ -30,7 +30,8 @@ export const ExamPage = pipe(
         state = {
             isNewExamFormVisible: false,
             examName: null,
-            selectedExamDate: new Date()
+            selectedExamDate: new Date(),
+            selectedClass: null,
         }
 
         toggleNewClassForm() {
@@ -47,7 +48,12 @@ export const ExamPage = pipe(
         }
 
         creteNewClassRoom() {
-            alert("creating new exam")
+            const newExamObject = {
+                name: this.state.examName,
+                examDate: this.state.selectedExamDate,
+                class: this.state.selectedClass
+            }
+            console.debug('newExamObject', newExamObject)
         }
 
         handleAction(action, payload) {
@@ -87,15 +93,16 @@ export const ExamPage = pipe(
                                 <div className="oneInput">
                                 <select
                                     className="form-control"
-                                    onChange={null}
+                                    onChange={c => this.setState({selectedClass: c.target.value})}
                                     >
-                                    <option value="osztaly1">Osztály #1</option>
+                                        <option value="osztaly1">Osztály #1</option>
+                                        <option value="osztaly2">Osztály #2</option>
                                     </select>
                                 </div>
                                 <div className="oneInput">
                                     <DatePicker
                                         selected={this.state.selectedExamDate}
-                                        onChange={null}
+                                        onChange={d  => this.setState({selectedExamDate: d})}
                                         showTimeSelect
                                         dateFormat="Pp"
                                         className={classnames(
