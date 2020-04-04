@@ -32,7 +32,7 @@ export const CookieConsent = connect<{}, CookieConsentDispatchProps, {}>(
     }
 
     render() {
-      if (this.state.active) {
+      if (this.state.active && process.env.NODE_ENV !== 'development') {
         return (
           <div className="cookie-consent p-2">
             <div className="container">

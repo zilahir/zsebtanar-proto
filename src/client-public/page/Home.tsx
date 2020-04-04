@@ -51,11 +51,11 @@ export const Home = pipe(
             {
               process.env.NODE_ENV === 'development'
               ? (
-                <h4>
+                <code>
                   {
-                    `You are currntly logged in with role ${getUserRole(this.props.session.token)}`
+                    `You are currently logged in with role: ${getUserRole(this.props.session.token)}`
                   }
-                </h4>
+                </code>
               )
               : null
             }

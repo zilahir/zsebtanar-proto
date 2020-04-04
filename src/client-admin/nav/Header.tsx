@@ -4,7 +4,7 @@ import { RouteComponentProps } from 'react-router'
 import { NavLink, withRouter } from 'react-router-dom'
 import { Button } from 'client-common/component/general/Button'
 import { Icon } from 'client-common/component/general/Icon'
-import { isAdmin, isTeacher } from 'client-common/services/user'
+import { isAdmin } from 'client-common/services/user'
 import { signOut } from 'client-common/store/actions/auth'
 import { openSideNav } from 'client-common/store/reducers/sideNav'
 import { Dropdown } from 'client-common/component/general/dropdown/Dropdown'
@@ -48,18 +48,6 @@ export const Header = withRouter(
                   Publikus
                 </a>
               </li>
-              {
-                isTeacher(props.session.token) && (
-                  <Dropdown elementType="li">
-                    <DropdownToggle>Tanár</DropdownToggle>
-                    <DropdownMenu>
-                      <NavLink activeClassName="active" className="dropdown-item" to="/teacher">
-                        <Icon fa="" /> Tanár
-                      </NavLink>
-                    </DropdownMenu>
-                  </Dropdown>
-                )
-              }
               {isAdmin(props.session.token) && (
                 <Dropdown elementType="li">
                   <DropdownToggle>Rendszer</DropdownToggle>

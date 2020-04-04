@@ -3,7 +3,7 @@ import { Dropdown } from 'client-common/component/general/dropdown/Dropdown'
 import { DropdownMenu } from 'client-common/component/general/dropdown/DropdownMenu'
 import { DropdownToggle } from 'client-common/component/general/dropdown/DropdownToggle'
 import { Link } from 'client-common/component/general/Link'
-import { isAdmin } from 'client-common/services/user'
+import { isAdmin, isTeacher } from 'client-common/services/user'
 import { signOut } from 'client-common/store/actions/auth'
 import { openSignInModal, openSignUpModal } from 'client-common/store/actions/modal'
 import { openSideNav } from 'client-common/store/reducers/sideNav'
@@ -79,6 +79,12 @@ export const Header = connect<StoreProps, DispatchProps, {}>(
   )
 })
 
+const teacherMenu = () => (
+  <NavLink className="dropdown-item" to="/teacher">
+    Új osztály
+  </NavLink>
+)
+
 function signedInMenu(props: AllProps) {
   return (
     <Dropdown elementType="li" className="user-menu" right key="user-menu">
@@ -92,6 +98,13 @@ function signedInMenu(props: AllProps) {
         <NavLink exact to="/profile" className="dropdown-item">
           Profil
         </NavLink>
+        {
+                props.session.signedIn && isTeacher(props.session.token)
+                  ? (
+                    teacherMenu()
+                  )
+                  : null
+              }
         <a href="#" className="dropdown-item" onClick={props.signOut}>
           Kijelentkezés
         </a>
