@@ -11,6 +11,7 @@ import { MainClassificationSelector } from '../component/MainClassificationSelec
 import { RouteComponentProps } from 'react-router'
 import { setupPage } from 'client-common/component/hoc/setupPage'
 import { YouTubeEmbed } from '../component/YouTubeEmbed'
+import { getUserRole } from 'client-common/services/user'
 
 interface StoreProps {
   session: state.Session
@@ -42,11 +43,22 @@ export const Home = pipe(
       this.props.history.push({ pathname: '/search', search: `?q=${this.searchInput.value}` })
     }, 800)
 
-    render() {
+    render() {  
       return (
         <div>
           <div className="jumbotron">
             {this.renderWelcome()}
+            {
+              process.env.NODE_ENV === 'development'
+              ? (
+                <h4>
+                  {
+                    `You are currntly logged in with role ${getUserRole(this.props.session.token)}`
+                  }
+                </h4>
+              )
+              : null
+            }
             <div className="my-5 col-11 mx-auto">
               <NavLink to="/search">
                 <div className="search-input-group ">

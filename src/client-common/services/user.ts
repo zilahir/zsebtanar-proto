@@ -25,6 +25,18 @@ export function getUserDetails(uid) {
     .then(s => s.val())
 }
 
+export const getUserRole = token => {
+  const roles = {
+    user: isUser(token),
+    admin: isAdmin(token),
+    teacher: isTeacher(token)
+  }
+  const thisRole = Object.keys(roles).find(curr => (
+    roles[curr] === true
+  ))
+  return thisRole
+}
+
 export const removeUserData = uid => Users.child(uid).remove()
 
 export const getAllUser = () => cloudFnGet(`user/all`, {}, { withToken: true })
