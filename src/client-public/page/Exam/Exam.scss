@@ -1,0 +1,35 @@
+.examWrapper {
+    padding: 40px 0;
+    p {
+        &:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    }
+    .newexam-form {
+        &.hidden {
+            display: none;
+        }
+
+        .submit-container {
+            display: flex;
+            justify-content: flex-end;
+            padding: 20px 0;
+        }
+    }
+}
+
+.exam-list {
+    padding: 40px 0;
+    .exam-list-table {
+        .actions {
+            display: flex;
+            justify-content: space-around;
+            i {
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
