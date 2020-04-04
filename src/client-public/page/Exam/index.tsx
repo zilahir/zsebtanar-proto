@@ -12,9 +12,6 @@ import './Exam.scss'
 import { withRouter } from 'react-router'
 import { History } from 'history'
 
-interface ExamStateProps {
-    session: state.Session
-  }
 
 interface ExamPageDispatchProps {
     openTaskListModal: typeof openTaskListModal,
@@ -23,14 +20,11 @@ interface ExamPageDispatchProps {
 
 interface ExamProps extends RouteComponentProps<{}> {}
 
-const mapStateToProps = (state: state.Root) => ({
-    session: state.app.session,
-  })
 
 export const ExamPage = pipe(
     withRouter,
-    connect<ExamStateProps, ExamPageDispatchProps, ExamProps>(
-        mapStateToProps,
+    connect<{}, ExamPageDispatchProps, ExamProps>(
+        undefined,
         { openTaskListModal }
     )
 )(
