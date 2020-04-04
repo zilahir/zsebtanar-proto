@@ -14,5 +14,6 @@ app.use('/api/exercise/getNextHint', require('./exercise/hints/index').route)
 app.use('/api/exercise/state', require('./exercise/state/index').route)
 app.use('/api/exercise/', require('./exercise/crud/index').route)
 app.use('/api/feedback/', require('./feedback/index').route)
+app.use('/api/classroom/', require('./classrooms/index').route)
 
 export default app
