@@ -45,6 +45,10 @@ export const ExamPage = pipe(
             taskList: []
         }
 
+        componentDidMount() {
+            console.debug('mounted')
+        }
+
         toggleNewExamForm() {
             console.debug('clicked', true)
             this.setState({
@@ -79,7 +83,7 @@ export const ExamPage = pipe(
             }
         }
 
-        addExercise(exercise) {
+        addExercise = exercise => {
             this.setState({
                 taskList: {
                     ...this.state.taskList,

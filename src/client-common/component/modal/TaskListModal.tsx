@@ -10,7 +10,7 @@ interface TaskListModalProps {
 }
 
 interface TaskListModalState {
-	state: 'init' | 'loading' | 'finished' | 'error'
+	state: {}
 }
 
 const mapStateToProps = state => ({
