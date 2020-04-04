@@ -15,7 +15,6 @@ import { History } from 'history'
 
 interface ExamPageDispatchProps {
     openTaskListModal: typeof openTaskListModal,
-    history: History,
 }
 
 interface ExamProps extends RouteComponentProps<{}> {}
