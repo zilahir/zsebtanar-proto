@@ -80,9 +80,14 @@ export const Header = connect<StoreProps, DispatchProps, {}>(
 })
 
 const teacherMenu = () => (
-  <NavLink className="dropdown-item" to="/teacher">
-    Új osztály
-  </NavLink>
+  <>
+    <NavLink className="dropdown-item" to="/classes">
+      Osztályok
+    </NavLink>
+    <NavLink className="dropdown-item" to="/exams">
+      Dolgozatok
+    </NavLink>
+  </>
 )
 
 function signedInMenu(props: AllProps) {

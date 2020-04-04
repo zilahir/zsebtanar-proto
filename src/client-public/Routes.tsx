@@ -20,7 +20,8 @@ import { Profile } from './page/Profile'
 import { Search } from './page/Search'
 import { Workarounds } from '../client-common/page/Workarounds'
 import { CookieConsent } from './component/CookieConsent'
-import TeacherPage from './page/Teacher'
+import ClassPage from './page/Class'
+import ExamPage from './page/Exam'
 
 interface RoutersProps {
   history: History
@@ -69,7 +70,8 @@ const App = props => () => {
           {props.session.signedIn && <Route path="/profile" component={Profile} />}
           <Route path="/subject/:subject/:topic" component={ExercisesByTopic} />
           <Route path="/grade/:grade" component={ExercisesByGrade} />
-          <Route path="/teacher" component={TeacherPage} />
+          <Route path="/classes" component={ClassPage} />
+          <Route path="/exams" component={ExamPage} />
           <Route path="/search" component={Search} />
           <Route path="/about" component={About} />
           <Route path="/joinus" component={JoinUs} />

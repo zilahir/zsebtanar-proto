@@ -2,10 +2,10 @@ import * as React from 'react'
 import classnames from 'classnames'
 
 import { Icon } from 'client-common/component/general/Icon'
-import './Teacher.module.scss'
+import './ClassPage.scss'
 import { Button } from 'client-common/component/general/Button'
 
-class TeacherPage extends React.Component<{}> {
+class ClassPage extends React.Component<{}> {
     state = {
         isNewClassFormVisible: false,
         className: null,
@@ -106,4 +106,4 @@ class TeacherPage extends React.Component<{}> {
     }
 }
 
-export default TeacherPage
+export default ClassPage
