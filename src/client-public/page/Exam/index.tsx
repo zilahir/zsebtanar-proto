@@ -92,6 +92,7 @@ class ExamPage extends React.Component<ExamPageProps> {
                                 <th>Feladatok</th>
                                 <th>Létrehozva</th>
                                 <th>Határidő</th>
+                                <th>Kitöltöttség</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -108,6 +109,11 @@ class ExamPage extends React.Component<ExamPageProps> {
                                         </td>
 																				<td>
                                             {new Date("2020-05-01").toLocaleDateString()}
+                                        </td>
+                                        <td>
+                                            <span>
+                                                1/99
+                                            </span>
                                         </td>
                                         <td className="actions">
                                             <p
