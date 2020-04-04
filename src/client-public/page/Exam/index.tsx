@@ -1,11 +1,16 @@
 import * as React from 'react'
 import classnames from 'classnames'
+import { History } from 'history'
 
 import { Icon } from 'client-common/component/general/Icon'
 import './Exam.scss'
 import { Button } from 'client-common/component/general/Button'
 
-class ExamPage extends React.Component<{}> {
+interface ExamPageProps {
+    history: History
+}
+
+class ExamPage extends React.Component<ExamPageProps> {
     state = {
         isNewExamFormVisible: false,
         examName: null,
@@ -23,9 +28,19 @@ class ExamPage extends React.Component<{}> {
             examName: e.target.value
         })
     }
+
     creteNewClassRoom() {
         alert("creating new exam")
     }
+
+    handleAction(action, payload) {
+        switch(action) {
+            case 'edit': {
+                this.props.history.push(`/exam/${payload.examId}`)
+            }
+        }
+    }
+
     render() {
         return  (
             <div className="row">
@@ -95,7 +110,11 @@ class ExamPage extends React.Component<{}> {
                                             {new Date("2020-05-01").toLocaleDateString()}
                                         </td>
                                         <td className="actions">
-                                            <Icon fa="pencil" />
+                                            <p
+                                                onClick={() => this.handleAction('edit', {examId: i})}
+                                            >
+                                                <Icon fa="pencil" />
+                                            </p>
                                             <Icon fa="times" />
                                         </td>
                                     </tr>
