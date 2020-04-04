@@ -10,7 +10,6 @@ import { openTaskListModal } from 'client-common/store/actions/modal'
 
 import './Exam.scss'
 import { withRouter } from 'react-router'
-import { History } from 'history'
 
 
 interface ExamPageDispatchProps {
