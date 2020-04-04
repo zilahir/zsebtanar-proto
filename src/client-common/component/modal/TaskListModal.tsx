@@ -5,6 +5,7 @@ import { DialogHeader } from './base/DialogHeader'
 import { DialogBody } from './base/DialogBody'
 import { Dialog } from './base/Dialog'
 
+// const MATH_TASKLIST_KEY = 'LA4J0N_CrzuVOjy0xyg'  //TODO this needs to be dynamically
 
 interface TaskListModalProps {
 	session: state.Session
@@ -15,7 +16,7 @@ interface TaskListModalState {
 }
 
 const mapStateToProps = state => ({
-  session: state.app.session
+	session: state.app.session,
 })
 
 export const TaskListModal = connect<{}, TaskListModalProps, ui.ModalProps>(mapStateToProps)(
@@ -29,6 +30,7 @@ export const TaskListModal = connect<{}, TaskListModalProps, ui.ModalProps>(mapS
 
 		render() {
 			const props = this.props
+			console.debug('props', this.props)
 			return (
 				<div>
 					<Dialog className="taskList">
