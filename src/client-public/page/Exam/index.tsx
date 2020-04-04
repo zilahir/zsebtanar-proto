@@ -84,15 +84,23 @@ export const ExamPage = connect<{}, ExamPageProps, {}>(
                                     </select>
                                 </div>
                                 <div className="oneInput">
-                                <DatePicker
-                                    selected={this.state.selectedExamDate}
-                                    onChange={null}
-                                    showTimeSelect
-                                    dateFormat="Pp"
-                                    className={classnames(
-                                        "form-control",
-                                        "exam-date"
-                                    )}
+                                    <DatePicker
+                                        selected={this.state.selectedExamDate}
+                                        onChange={null}
+                                        showTimeSelect
+                                        dateFormat="Pp"
+                                        className={classnames(
+                                            "form-control",
+                                            "exam-date"
+                                        )}
+                                    />
+                                </div>
+                                <div className="oneInput">
+                                    <input
+                                        type="text"
+                                        placeholder="Feladatok"
+                                        onClick={this.props.openTaskListModal}
+                                        className="form-control"
                                     />
                                 </div>
                                 <div className="submit-container">
