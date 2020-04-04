@@ -9,10 +9,10 @@ const Exams = DB.ref('exams')
 route.post('/insert',
 	(req, res) => {
 		const body = req.body
-		const key = DB.ref('classrooms').push().key
+		const key = DB.ref('exams').push().key
 		Exams.child(key).set({
 			name: body.name,
-            class: body.classId,
+            classId: body.classId,
             examDate: body.date,
             taskList: body.taskList
 		})

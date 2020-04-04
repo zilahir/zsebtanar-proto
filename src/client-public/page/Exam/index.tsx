@@ -10,6 +10,7 @@ import { openTaskListModal } from 'client-common/store/actions/modal'
 
 import './Exam.scss'
 import { withRouter } from 'react-router'
+import { createNewExam } from 'client-common/services/exam'
 
 
 interface ExamPageDispatchProps {
@@ -34,7 +35,7 @@ export const ExamPage = pipe(
             selectedClass: null,
         }
 
-        toggleNewClassForm() {
+        toggleNewExamForm() {
             console.debug('clicked', true)
             this.setState({
                 isNewExamFormVisible: !this.state.isNewExamFormVisible,
@@ -47,12 +48,14 @@ export const ExamPage = pipe(
             })
         }
 
-        creteNewClassRoom() {
+        createNewExam() {
             const newExamObject = {
                 name: this.state.examName,
-                examDate: this.state.selectedExamDate,
-                class: this.state.selectedClass
+                date: this.state.selectedExamDate,
+                classId: this.state.selectedClass,
+                taskList: [1, 2, 3] // TODO: finish this
             }
+            createNewExam(newExamObject)
             console.debug('newExamObject', newExamObject)
         }
 
@@ -71,7 +74,7 @@ export const ExamPage = pipe(
                     <div className="col-lg-12">
                         <div className="examWrapper">
                             <p
-                                onClick={() => this.toggleNewClassForm()}
+                                onClick={() => this.toggleNewExamForm()}
                             >
                                 <Icon fa={this.state.isNewExamFormVisible ? 'minus' : 'plus'} /> {
                                     this.state.isNewExamFormVisible ? 'Mező elrejtése' : 'Új dolgozat létrehozása'
@@ -125,7 +128,7 @@ export const ExamPage = pipe(
                                         className={classnames(
                                             "btn-success"
                                         )}
-                                        onAction={() => this.creteNewClassRoom()}
+                                        onAction={() => this.createNewExam()}
                                     >
                                         Dolgozat létrehozása
                                     </Button>
