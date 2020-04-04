@@ -1,7 +1,7 @@
 import * as React from 'react'
 import classnames from 'classnames'
 import { pipe } from 'ramda'
-
+import { RouteComponentProps } from 'react-router'
 import DatePicker from "react-datepicker"
 import { connect } from 'react-redux'
 import { Icon } from 'client-common/component/general/Icon'
@@ -10,19 +10,31 @@ import { openTaskListModal } from 'client-common/store/actions/modal'
 
 import './Exam.scss'
 import { withRouter } from 'react-router'
+import { History } from 'history'
 
-interface ExamPageProps {
-    openTaskListModal: typeof openTaskListModal
+interface ExamStateProps {
+    session: state.Session
+  }
+
+interface ExamPageDispatchProps {
+    openTaskListModal: typeof openTaskListModal,
+    history: History,
 }
+
+interface ExamProps extends RouteComponentProps<{}> {}
+
+const mapStateToProps = (state: state.Root) => ({
+    session: state.app.session,
+  })
 
 export const ExamPage = pipe(
     withRouter,
-    connect<{}, ExamPageProps, {}>(
-        undefined,
+    connect<ExamStateProps, ExamPageDispatchProps, ExamProps>(
+        mapStateToProps,
         { openTaskListModal }
     )
 )(
-    class ExamPage extends React.Component<ExamPageProps> {
+    class ExamPage extends React.Component<ExamProps> {
         state = {
             isNewExamFormVisible: false,
             examName: null,
@@ -49,7 +61,8 @@ export const ExamPage = pipe(
         handleAction(action, payload) {
             switch(action) {
                 case 'edit': {
-                    console.debug('edit', payload)
+                    console.debug(payload)
+                    this.props.history.push(`exam/${payload.examId}`)
                 }
             }
         }
