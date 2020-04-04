@@ -22,6 +22,7 @@ import { Workarounds } from '../client-common/page/Workarounds'
 import { CookieConsent } from './component/CookieConsent'
 import ClassPage from './page/Class'
 import ExamPage from './page/Exam'
+import ClassManage from './page/Class/Manage'
 
 interface RoutersProps {
   history: History
@@ -71,6 +72,7 @@ const App = props => () => {
           <Route path="/subject/:subject/:topic" component={ExercisesByTopic} />
           <Route path="/grade/:grade" component={ExercisesByGrade} />
           <Route path="/classes" component={ClassPage} />
+          <Route path="/class/:class" component={ClassManage} />
           <Route path="/exams" component={ExamPage} />
           <Route path="/search" component={Search} />
           <Route path="/about" component={About} />

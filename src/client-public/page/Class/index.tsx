@@ -1,11 +1,16 @@
 import * as React from 'react'
 import classnames from 'classnames'
+import { History } from 'history'
 
 import { Icon } from 'client-common/component/general/Icon'
 import './ClassPage.scss'
 import { Button } from 'client-common/component/general/Button'
 
-class ClassPage extends React.Component<{}> {
+interface ClassPageProps {
+    history: History
+}
+
+class ClassPage extends React.Component<ClassPageProps> {
     state = {
         isNewClassFormVisible: false,
         className: null,
@@ -23,8 +28,17 @@ class ClassPage extends React.Component<{}> {
             className: e.target.value
         })
     }
+
     creteNewClassRoom() {
         alert("creating new classroom")
+    }
+
+    handleAction(action, payload) {
+        switch(action) {
+            case 'edit': {
+                this.props.history.push(`/class/${payload.classId}`)
+            }
+        }
     }
     render() {
         return  (
@@ -91,8 +105,15 @@ class ClassPage extends React.Component<{}> {
                                             {new Date().toLocaleDateString()}
                                         </td>
                                         <td className="actions">
-                                            <Icon fa="pencil" />
-                                            <Icon fa="times" />
+                                            <p
+                                                role="button"
+                                                onClick={() => this.handleAction('edit', {classId: i})}
+                                            >
+                                                <Icon fa="pencil" />
+                                            </p>
+                                            <p>
+                                                <Icon fa="times" />
+                                            </p>
                                         </td>
                                     </tr>
                                 ))
