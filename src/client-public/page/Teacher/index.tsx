@@ -66,8 +66,39 @@ class TeacherPage extends React.Component<{}> {
                     </div>
                 </div>
                 <div className="col-lg-12">
+                    <h3>
+                        Saját osztályaim
+                    </h3>
                     <div className="classroom-list">
-                        
+                    <table className="table table-hover table mt-3 class-list-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Osztály neve</th>
+                                <th>Létrehozva</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                Array(10).fill(10).map((c, i) => (
+                                    <tr>
+                                        <td key={i}>{i + 1}</td>
+                                        <td>
+                                            {`Osztály ${i + 1}`}
+                                        </td>
+                                        <td>
+                                            {new Date().toLocaleDateString()}
+                                        </td>
+                                        <td className="actions">
+                                            <Icon fa="pencil" />
+                                            <Icon fa="times" />
+                                        </td>
+                                    </tr>
+                                ))
+                            }
+                        </tbody>
+                    </table>
                     </div>
                 </div>
             </div>

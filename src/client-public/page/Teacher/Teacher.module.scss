@@ -17,8 +17,19 @@
             padding: 20px 0;
         }
     }
+}
 
-    .classroom-list {
-        padding: 40px 0;
+.classroom-list {
+    padding: 40px 0;
+    .class-list-table {
+        .actions {
+            display: flex;
+            justify-content: space-around;
+            i {
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
     }
 }
