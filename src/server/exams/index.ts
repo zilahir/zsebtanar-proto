@@ -14,7 +14,8 @@ route.post('/insert',
 			name: body.name,
             classId: body.classId,
             examDate: body.date,
-            taskList: body.taskList
+            taskList: body.taskList,
+            ownerId: body.ownerId,
 		})
 		res.status(200).send({
 			success: true

@@ -17,17 +17,26 @@ interface ExamPageDispatchProps {
     openTaskListModal: typeof openTaskListModal,
 }
 
+interface ExamPageProps {
+    session: state.Session
+}
+
+const mapStateToProps = (state: state.Root) => ({
+    session: state.app.session
+})
+
 interface ExamProps extends ExamPageDispatchProps, RouteComponentProps<{}> {}
 
+type AllProps = ExamPageProps & ExamProps
 
 export const ExamPage = pipe(
     withRouter,
     connect<{}, ExamPageDispatchProps, ExamProps>(
-        undefined,
+        mapStateToProps,
         { openTaskListModal }
     )
 )(
-    class ExamPage extends React.Component<ExamProps> {
+    class ExamPage extends React.Component<AllProps> {
         state = {
             isNewExamFormVisible: false,
             examName: null,
@@ -53,7 +62,8 @@ export const ExamPage = pipe(
                 name: this.state.examName,
                 date: this.state.selectedExamDate,
                 classId: this.state.selectedClass,
-                taskList: [1, 2, 3] // TODO: finish this
+                taskList: [1, 2, 3], // TODO: finish this
+                ownerId: this.props.session.user.uid
             }
             createNewExam(newExamObject)
             console.debug('newExamObject', newExamObject)
