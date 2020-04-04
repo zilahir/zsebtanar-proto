@@ -15,6 +15,7 @@ class ExamPage extends React.Component<ExamPageProps> {
     state = {
         isNewExamFormVisible: false,
         examName: null,
+        selectedExamDate: new Date()
     }
 
     toggleNewClassForm() {
@@ -77,10 +78,14 @@ class ExamPage extends React.Component<ExamPageProps> {
                             </div>
                             <div className="oneInput">
                               <DatePicker
-                                selected={null}
+                                selected={this.state.selectedExamDate}
                                 onChange={null}
                                 showTimeSelect
                                 dateFormat="Pp"
+                                className={classnames(
+                                    "form-control",
+                                    "exam-date"
+                                )}
                                 />
                             </div>
                             <div className="submit-container">
