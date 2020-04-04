@@ -1,6 +1,7 @@
 import * as React from 'react'
 import classnames from 'classnames'
-import { History } from 'history'
+import { pipe } from 'ramda'
+
 import DatePicker from "react-datepicker"
 import { connect } from 'react-redux'
 import { Icon } from 'client-common/component/general/Icon'
@@ -8,15 +9,18 @@ import { Button } from 'client-common/component/general/Button'
 import { openTaskListModal } from 'client-common/store/actions/modal'
 
 import './Exam.scss'
+import { withRouter } from 'react-router'
 
 interface ExamPageProps {
-    history: History
     openTaskListModal: typeof openTaskListModal
 }
 
-export const ExamPage = connect<{}, ExamPageProps, {}>(
-    undefined,
-    { openTaskListModal }
+export const ExamPage = pipe(
+    withRouter,
+    connect<{}, ExamPageProps, {}>(
+        undefined,
+        { openTaskListModal }
+    )
 )(
     class ExamPage extends React.Component<ExamPageProps> {
         state = {
@@ -45,7 +49,7 @@ export const ExamPage = connect<{}, ExamPageProps, {}>(
         handleAction(action, payload) {
             switch(action) {
                 case 'edit': {
-                    this.props.history.push(`/exam/${payload.examId}`)
+                    console.debug('edit', payload)
                 }
             }
         }
@@ -144,7 +148,7 @@ export const ExamPage = connect<{}, ExamPageProps, {}>(
                                             <td>
                                                 {new Date().toLocaleDateString()}
                                             </td>
-                                                                                    <td>
+                                            <td>
                                                 {new Date("2020-05-01").toLocaleDateString()}
                                             </td>
                                             <td>
