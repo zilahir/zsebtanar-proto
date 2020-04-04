@@ -16,7 +16,7 @@ interface ExamPageDispatchProps {
     openTaskListModal: typeof openTaskListModal,
 }
 
-interface ExamProps extends RouteComponentProps<{}> {}
+interface ExamProps extends RouteComponentProps<{history}> {}
 
 
 export const ExamPage = pipe(
