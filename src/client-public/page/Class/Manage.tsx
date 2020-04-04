@@ -35,19 +35,22 @@ class ClassManage extends React.Component<{}> {
             <div className="row">
                 <div className="col-lg-12">
                     <div className="classWrapper">
-                        <h3>
+                        <h2>
                             Osztály gépház
-                        </h3>
+                        </h2>
                         <div className="invite">
-                        <div className="oneInput">
-                            <input
-                                name="invitee"
-                                type="text"
-                                onChange={(e) => this.handleFormChange(e)}
-                                placeholder="Diák email címe"
-                                className="form-control"
-                                value={this.state.invitee}
-                            />
+                            <h3>
+                                Diák meghívása az osztályba
+                            </h3>
+                            <div className="oneInput">
+                                <input
+                                    name="invitee"
+                                    type="text"
+                                    onChange={(e) => this.handleFormChange(e)}
+                                    placeholder="Diák email címe"
+                                    className="form-control"
+                                    value={this.state.invitee}
+                                />
                             </div>
                         </div>
                         <div className="submit-container">
@@ -60,6 +63,9 @@ class ClassManage extends React.Component<{}> {
                             </Button>
                         </div>
                         <div className="student-list">
+                            <h3>
+                                Diákok az osztályban
+                            </h3>
                             <table className="table table-hover table mt-3 student-list-table">
                                 <thead>
                                     <tr>
