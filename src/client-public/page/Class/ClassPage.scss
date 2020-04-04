@@ -1,4 +1,4 @@
-.teacherWrapper {
+.teacherWrapper, {
     padding: 40px 0;
     p {
         &:hover {
@@ -16,6 +16,18 @@
             justify-content: flex-end;
             padding: 20px 0;
         }
+    }
+}
+
+.classWrapper {
+    padding: 40px 0;
+    .oneInput {
+        margin: 20px 0;
+    }
+    .submit-container {
+        display: flex;
+        justify-content: flex-end;
+        padding: 20px 0;
     }
 }
 
