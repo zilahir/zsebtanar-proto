@@ -117,6 +117,17 @@ export function openFeedbackModal(params?) {
   )
 }
 
+export function openTaskListModal(params?) {
+  return openModal(
+    () =>
+      import(/* webpackChunkName: 'public-modal' */ 'client-common/component/modal/TaskListModal'),
+    {
+      onClose: identity,
+      ...params
+    }
+  )
+}
+
 export function openWikiModal(params?: WikiModalParams) {
   return openModal(
     () => import(/* webpackChunkName: 'public-modal' */ 'client-common/component/modal/WikiModal'),

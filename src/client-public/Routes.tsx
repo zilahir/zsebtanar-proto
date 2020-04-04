@@ -21,7 +21,7 @@ import { Search } from './page/Search'
 import { Workarounds } from '../client-common/page/Workarounds'
 import { CookieConsent } from './component/CookieConsent'
 import ClassPage from './page/Class'
-import ExamPage from './page/Exam'
+import { ExamPage } from './page/Exam'
 import ClassManage from './page/Class/Manage'
 import ExamManage from './page/Exam/Manage'
 
