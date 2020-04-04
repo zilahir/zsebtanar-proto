@@ -9,22 +9,14 @@ interface TaskListModalProps {
 	session: state.Session
 }
 
-interface TaskListModalState {
-	state: {}
-}
-
 const mapStateToProps = state => ({
 	session: state.app.session,
 })
 
 export const TaskListModal = connect<{}, TaskListModalProps, ui.ModalProps>(mapStateToProps)(
 	class TaskListModal extends React.Component<
-	TaskListModalProps & ui.ModalProps,
-	TaskListModalState
+	TaskListModalProps & ui.ModalProps
 	> {
-		state = {
-			state: 'init'
-		} as TaskListModalState
 
 		render() {
 			const props = this.props
