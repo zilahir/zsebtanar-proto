@@ -23,6 +23,9 @@ class TeacherPage extends React.Component<{}> {
             className: e.target.value
         })
     }
+    creteNewClassRoom() {
+        alert("creating new classroom")
+    }
     render() {
         return  (
             <div className="row">
@@ -54,7 +57,7 @@ class TeacherPage extends React.Component<{}> {
                                     className={classnames(
                                         "btn-success"
                                     )}
-                                    onAction={() => alert("hello")}
+                                    onAction={() => this.creteNewClassRoom()}
                                 >
                                     Osztly létrehozása
                                 </Button>
