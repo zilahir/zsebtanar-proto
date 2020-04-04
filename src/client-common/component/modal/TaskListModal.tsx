@@ -5,8 +5,6 @@ import { DialogHeader } from './base/DialogHeader'
 import { DialogBody } from './base/DialogBody'
 import { Dialog } from './base/Dialog'
 
-// const MATH_TASKLIST_KEY = 'LA4J0N_CrzuVOjy0xyg'  //TODO this needs to be dynamically
-
 interface TaskListModalProps {
 	session: state.Session
 }
