@@ -6,7 +6,7 @@ import DatePicker from "react-datepicker"
 import { connect } from 'react-redux'
 import { Icon } from 'client-common/component/general/Icon'
 import { Button } from 'client-common/component/general/Button'
-import { openTaskListModal } from 'client-common/store/actions/modal'
+import { openTaskListModal, openExerciseSearch } from 'client-common/store/actions/modal'
 
 import './Exam.scss'
 import { withRouter } from 'react-router'
@@ -14,7 +14,7 @@ import { createNewExam } from 'client-common/services/exam'
 
 
 interface ExamPageDispatchProps {
-    openTaskListModal: typeof openTaskListModal,
+    openExerciseSearch: typeof openTaskListModal,
 }
 
 interface ExamPageProps {
@@ -33,7 +33,7 @@ export const ExamPage = pipe(
     withRouter,
     connect<{}, ExamPageDispatchProps, ExamProps>(
         mapStateToProps,
-        { openTaskListModal }
+        { openExerciseSearch }
     )
 )(
     class ExamPage extends React.Component<AllProps> {
@@ -42,6 +42,7 @@ export const ExamPage = pipe(
             examName: null,
             selectedExamDate: new Date(),
             selectedClass: null,
+            taskList: []
         }
 
         toggleNewExamForm() {
@@ -62,7 +63,7 @@ export const ExamPage = pipe(
                 name: this.state.examName,
                 date: this.state.selectedExamDate,
                 classId: this.state.selectedClass,
-                taskList: [1, 2, 3], // TODO: finish this
+                taskList: this.state.taskList,
                 ownerId: this.props.session.user.uid
             }
             createNewExam(newExamObject)
@@ -76,6 +77,21 @@ export const ExamPage = pipe(
                     this.props.history.push(`exam/${payload.examId}`)
                 }
             }
+        }
+
+        addExercise(exercise) {
+            this.setState({
+                taskList: {
+                    ...this.state.taskList,
+                    exercise,
+                }
+            })
+        }
+
+        openExercise() {
+            this.props.openExerciseSearch({
+                onSuccess: this.addExercise
+            })
         }
 
         render() {
@@ -128,7 +144,7 @@ export const ExamPage = pipe(
                                     <input
                                         type="text"
                                         placeholder="Feladatok"
-                                        onClick={this.props.openTaskListModal}
+                                        onClick={() => this.openExercise()}
                                         className="form-control"
                                     />
                                 </div>
