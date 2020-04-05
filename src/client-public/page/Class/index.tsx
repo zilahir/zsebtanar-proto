@@ -132,7 +132,7 @@ export const ClassPage = pipe(
                         </thead>
                         <tbody>
                             {
-                                Array(10).fill(10).map((c, i) => (
+                                this.props.classrooms.map((class, i) => (
                                     <tr>
                                         <td key={i}>{i + 1}</td>
                                         <td>
@@ -144,7 +144,7 @@ export const ClassPage = pipe(
                                         <td className="actions">
                                             <p
                                                 role="button"
-                                                onClick={() => this.handleAction('edit', {classId: i})}
+                                                onClick={() => this.handleAction('edit', {classId: i })}
                                             >
                                                 <Icon fa="pencil" />
                                             </p>
