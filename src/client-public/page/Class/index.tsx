@@ -142,15 +142,18 @@ export const ClassPage = pipe(
                                             {new Date().toLocaleDateString()}
                                         </td>
                                         <td className="actions">
-                                            <p
-                                                role="button"
-                                                onClick={() => this.handleAction('edit', {classId: i })}
+                                            <Button
+                                                onAction={() => this.handleAction('edit', {examId: i})}
+                                                className="btn btn-warning"
                                             >
-                                                <Icon fa="pencil" />
-                                            </p>
-                                            <p>
+                                                <Icon fa="edit" />
+                                            </Button>
+                                            <Button
+                                                onAction={() => this.handleAction('del', {examId: i})}
+                                                className="btn btn-danger"
+                                            >
                                                 <Icon fa="times" />
-                                            </p>
+                                            </Button>
                                         </td>
                                     </tr>
                                 ))

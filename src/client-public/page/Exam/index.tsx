@@ -208,12 +208,18 @@ export const ExamPage = pipe(
                                                 </span>
                                             </td>
                                             <td className="actions">
-                                                <p
-                                                    onClick={() => this.handleAction('edit', {examId: i})}
+                                                <Button
+                                                    onAction={() => this.handleAction('edit', {examId: i})}
+                                                    className="btn btn-warning"
                                                 >
-                                                    <Icon fa="pencil" />
-                                                </p>
-                                                <Icon fa="times" />
+                                                    <Icon fa="edit" />
+                                                </Button>
+                                                <Button
+                                                    onAction={() => this.handleAction('del', {examId: i})}
+                                                    className="btn btn-danger"
+                                                >
+                                                    <Icon fa="times" />
+                                                </Button>
                                             </td>
                                         </tr>
                                     ))
