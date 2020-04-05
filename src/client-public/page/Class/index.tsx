@@ -12,7 +12,8 @@ import { getClassRooms } from '../../../client-common/store/actions/classrooms'
 import pipe from 'ramda/es/pipe'
 
 interface ClassPageProps {
-    session: state.Session
+    session: state.Session,
+    classrooms: state.Classrooms,
 }
 
 interface ClassPageDispatchProps {
@@ -20,7 +21,8 @@ interface ClassPageDispatchProps {
   }
 
 const mapStateToProps = (state: state.Root) => ({
-    session: state.app.session
+    session: state.app.session,
+    classrooms: state.app.classrooms,
 })
 
 type AllProps = ClassPageProps & RouteComponentProps<{}> & ClassPageDispatchProps

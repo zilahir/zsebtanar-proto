@@ -42,7 +42,8 @@ declare namespace state {
     sideNav: SideNav
     modal: AppModal
     classifications: Classifications
-    notifications: Notifications
+    notifications: Notifications,
+    classrooms: Classrooms
   }
 
   interface Task {
@@ -99,6 +100,10 @@ declare namespace state {
 
   interface Notifications {
     list: Notification[]
+  }
+
+  interface Classrooms {
+    list: Classrooms[]
   }
 
   interface Notification {
