@@ -7,14 +7,16 @@ import { connect } from 'react-redux'
 import { Icon } from 'client-common/component/general/Icon'
 import { Button } from 'client-common/component/general/Button'
 import { openTaskListModal, openExerciseSearch } from 'client-common/store/actions/modal'
+import { getExams } from '../../../client-common/store/actions/exams'
 
 import './Exam.scss'
 import { withRouter } from 'react-router'
-import { createNewExam } from 'client-common/services/exam'
+import { createNewExam, getAllExam } from 'client-common/services/exam'
 
 
 interface ExamPageDispatchProps {
     openExerciseSearch: typeof openTaskListModal,
+    getExams: typeof getExams
 }
 
 interface ExamPageProps {
@@ -22,7 +24,7 @@ interface ExamPageProps {
 }
 
 const mapStateToProps = (state: state.Root) => ({
-    session: state.app.session
+    session: state.app.session,
 })
 
 interface ExamProps extends ExamPageDispatchProps, RouteComponentProps<{}> {}
@@ -33,7 +35,7 @@ export const ExamPage = pipe(
     withRouter,
     connect<{}, ExamPageDispatchProps, ExamProps>(
         mapStateToProps,
-        { openExerciseSearch }
+        { openExerciseSearch, getExams }
     )
 )(
     class ExamPage extends React.Component<AllProps> {
@@ -43,6 +45,14 @@ export const ExamPage = pipe(
             selectedExamDate: new Date(),
             selectedClass: null,
             taskList: []
+        }
+
+        componentDidMount() {
+            Promise.all([
+                getAllExam(this.props.session.user.id)
+            ]).then(res => {
+                this.props.getExams(res[0])
+            })
         }
 
         toggleNewExamForm() {
