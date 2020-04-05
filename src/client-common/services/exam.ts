@@ -6,6 +6,6 @@ export const createNewExam = newExamObject => (
 
 export const getAllExam = ownerId => (
 	cloudFnGet(`exam/getall`, { ownerId }, { withToken: true }).then(result => {
-		return result.data
+		return result.data.exams
 	})
 )

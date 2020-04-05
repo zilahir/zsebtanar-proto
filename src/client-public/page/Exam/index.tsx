@@ -20,11 +20,13 @@ interface ExamPageDispatchProps {
 }
 
 interface ExamPageProps {
-    session: state.Session
+    session: state.Session,
+    exams: state.App["exams"]
 }
 
 const mapStateToProps = (state: state.Root) => ({
     session: state.app.session,
+    exams: state.app.exams,
 })
 
 interface ExamProps extends ExamPageDispatchProps, RouteComponentProps<{}> {}
@@ -100,6 +102,7 @@ export const ExamPage = pipe(
         }
 
         render() {
+            console.debug('exams', this.props.exams)
             return  (
                 <div className="row">
                     <div className="col-lg-12">
@@ -187,7 +190,7 @@ export const ExamPage = pipe(
                             </thead>
                             <tbody>
                                 {
-                                    Array(10).fill(10).map((c, i) => (
+                                    this.props.exams.exams.map((currExam, i) => (
                                         <tr>
                                             <td key={i}>{i + 1}</td>
                                             <td>

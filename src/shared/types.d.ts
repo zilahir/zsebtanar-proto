@@ -44,6 +44,7 @@ declare namespace state {
     classifications: Classifications
     notifications: Notifications,
     classrooms: {classrooms:Array<Classrooms>}
+    exams: {exams:Array<Exams>}
   }
 
   interface Task {
@@ -106,7 +107,16 @@ declare namespace state {
     id: string,
     name: string,
     ownerId: string,
+    createdAt: string,
   }
+
+  interface Exams {
+    id: string,
+    name: string,
+    ownerId: string,
+    createdAt: string,
+  }
+
 
   interface Notification {
     id: string

@@ -1,7 +1,7 @@
 import { GET_ALL_EXAMS } from '../types'
 
 const initialState = {
-	classrooms: [],
+	exams: [],
 }
 
 const reducer = (state = initialState, action) => {
