@@ -37,7 +37,7 @@ route.get('/getall',
 		})
 		res.status(200).send({
 			success: true,
-			classRooms: [...result]
+			exams: [...result]
 		})
 	}
 )
