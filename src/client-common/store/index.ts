@@ -5,6 +5,7 @@ import sideNav from './reducers/sideNav'
 import { exerciseReducer as exercise } from './exercise'
 import { classificationReducer as classifications } from './classifications'
 import { notificationReducer as notifications } from './notifications'
+import classrooms from './reducers/classrooms'
 
 export const rootReducer = combineReducers({
   session,
@@ -12,5 +13,6 @@ export const rootReducer = combineReducers({
   sideNav,
   exercise,
   classifications,
-  notifications
+  notifications,
+  classrooms,
 })

@@ -7,25 +7,30 @@ import { RouteComponentProps } from 'react-router'
 import { Icon } from 'client-common/component/general/Icon'
 import './ClassPage.scss'
 import { Button } from 'client-common/component/general/Button'
-import { createNewClassRoom } from 'client-common/services/classroom'
+import { createNewClassRoom, getAllClassRoom } from 'client-common/services/classroom'
+import { getClassRooms } from '../../../client-common/store/actions/classrooms'
 import pipe from 'ramda/es/pipe'
 
 interface ClassPageProps {
     session: state.Session
 }
 
+interface ClassPageDispatchProps {
+    getClassRooms: typeof getClassRooms
+  }
+
 const mapStateToProps = (state: state.Root) => ({
     session: state.app.session
 })
 
-type AllProps = ClassPageProps & RouteComponentProps<{}>
+type AllProps = ClassPageProps & RouteComponentProps<{}> & ClassPageDispatchProps
 
 
 export const ClassPage = pipe(
     withRouter,
     connect<ClassPageProps, {}, RouteComponentProps<{}>>(
         mapStateToProps,
-        null,
+        { getClassRooms },
     )
 )(
     class ClassPage extends React.Component<AllProps> {
@@ -35,7 +40,6 @@ export const ClassPage = pipe(
     }
 
     toggleNewClassForm() {
-        console.debug('clicked', true)
         this.setState({
             isNewClassFormVisible: !this.state.isNewClassFormVisible,
         })
@@ -52,7 +56,6 @@ export const ClassPage = pipe(
             name: this.state.className,
             ownerId: this.props.session.user.uid
         }
-        console.debug('newClassObject', newClassObject)
         createNewClassRoom(newClassObject)
     }
 
@@ -62,6 +65,14 @@ export const ClassPage = pipe(
                 this.props.history.push(`/class/${payload.classId}`)
             }
         }
+    }
+
+    componentDidMount() {
+        Promise.all([
+            getAllClassRoom(this.props.session.user.uid)
+        ]).then(res => {
+            this.props.getClassRooms(res)
+        })
     }
     render() {
         return  (
