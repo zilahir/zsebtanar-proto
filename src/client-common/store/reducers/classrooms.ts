@@ -5,7 +5,6 @@ const initialState = {
 }
 
 const reducer = (state = initialState, action) => {
-	console.debug('payload', action)
 	switch (action.type) {
 	case GET_TEACHER_CLASSROOM:
 		return {

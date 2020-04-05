@@ -31,7 +31,6 @@ export const getUserRole = token => {
     admin: isAdmin(token),
     teacher: isTeacher(token)
   }
-  console.debug('roles', roles)
   const thisRole = Object.keys(roles).find(curr => (
     roles[curr] === true
   ))

@@ -19,7 +19,7 @@ class ClassManage extends React.Component<{}> {
         const newInviteObject = {
             email: this.state.invitee
         }
-        console.debug('newInviteObject', newInviteObject)
+        return newInviteObject
     }
 
     handleAction(action, payload) {

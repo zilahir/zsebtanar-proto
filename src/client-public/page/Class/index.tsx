@@ -77,6 +77,7 @@ export const ClassPage = pipe(
         })
     }
     render() {
+        console.debug('classrooms', this.props.classrooms)
         return  (
             <div className="row">
                 <div className="col-lg-12">

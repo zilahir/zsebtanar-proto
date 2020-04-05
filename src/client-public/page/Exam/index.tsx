@@ -45,12 +45,7 @@ export const ExamPage = pipe(
             taskList: []
         }
 
-        componentDidMount() {
-            console.debug('mounted')
-        }
-
         toggleNewExamForm() {
-            console.debug('clicked', true)
             this.setState({
                 isNewExamFormVisible: !this.state.isNewExamFormVisible,
             })
@@ -71,20 +66,17 @@ export const ExamPage = pipe(
                 ownerId: this.props.session.user.uid
             }
             createNewExam(newExamObject)
-            console.debug('newExamObject', newExamObject)
         }
 
         handleAction(action, payload) {
             switch(action) {
                 case 'edit': {
-                    console.debug(payload)
                     this.props.history.push(`exam/${payload.examId}`)
                 }
             }
         }
 
         addExercise = exercise => {
-            console.debug('exercise', exercise)
             this.setState({
                 taskList: [...this.state.taskList, exercise]
             })
