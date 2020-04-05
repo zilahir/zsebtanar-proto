@@ -39,3 +39,5 @@ route.get('/getall',
 		})
 	}
 )
+
+// TODO: implement delete API function
