@@ -84,7 +84,11 @@ export default function sessionWorkflow(state = INIT_STATE, action) {
     case SIGN_OUT_ERROR:
       return { ...state, error: action.payload }
     case CLOSE_MODAL:
-      return { ...state, error: null }
+      if (state.error) {
+        return { ...state, error: null }
+      } else {
+        return state
+      }
     default:
       return state
   }
