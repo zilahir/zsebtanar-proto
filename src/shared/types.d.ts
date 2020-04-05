@@ -43,7 +43,7 @@ declare namespace state {
     modal: AppModal
     classifications: Classifications
     notifications: Notifications,
-    classrooms: ObjectMap<Classrooms>
+    classrooms: {classrooms:Array<Classrooms>}
   }
 
   interface Task {

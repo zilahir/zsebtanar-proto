@@ -14,6 +14,7 @@ route.post('/insert',
 		ClassRooms.child(key).set({
 			name: body.name,
 			ownerId: body.ownerId,
+			createdAt: new Date().toLocaleDateString()
 		})
 		res.status(200).send({
 			success: true

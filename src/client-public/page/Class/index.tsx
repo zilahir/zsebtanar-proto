@@ -13,7 +13,7 @@ import pipe from 'ramda/es/pipe'
 
 interface ClassPageProps {
     session: state.Session,
-    classrooms: state.Classrooms,
+    classrooms: state.App["classrooms"],
 }
 
 interface ClassPageDispatchProps {
@@ -132,7 +132,7 @@ export const ClassPage = pipe(
                         </thead>
                         <tbody>
                             {
-                                this.props.classrooms.map((class, i) => (
+                                this.props.classrooms.classrooms.map((currClass, i) => (
                                     <tr>
                                         <td key={i}>{i + 1}</td>
                                         <td>

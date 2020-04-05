@@ -15,7 +15,8 @@ route.post('/insert',
             classId: body.classId,
             examDate: body.date,
             taskList: body.taskList,
-            ownerId: body.ownerId,
+			ownerId: body.ownerId,
+			createdAt: new Date().toLocaleDateString()
 		})
 		res.status(200).send({
 			success: true
