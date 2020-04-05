@@ -71,7 +71,7 @@ export const ClassPage = pipe(
         Promise.all([
             getAllClassRoom(this.props.session.user.uid)
         ]).then(res => {
-            this.props.getClassRooms(res)
+            this.props.getClassRooms(res[0])
         })
     }
     render() {

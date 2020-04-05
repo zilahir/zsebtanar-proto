@@ -5,11 +5,12 @@ const initialState = {
 }
 
 const reducer = (state = initialState, action) => {
+	console.debug('payload', action)
 	switch (action.type) {
 	case GET_TEACHER_CLASSROOM:
 		return {
 			...state,
-			classrooms: action.payload.classrooms,
+			classrooms: action.payload,
 		}
 	default:
 		return state
