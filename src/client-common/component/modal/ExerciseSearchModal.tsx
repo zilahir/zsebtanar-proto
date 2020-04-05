@@ -14,7 +14,8 @@ interface ConfirmModalProps extends ui.ModalProps {
   onSuccess: (exerciseId: string) => void
   filterOut: string[]
   buttonType?: ButtonType
-  content: React.ReactNode
+  content: React.ReactNode,
+  shouldClose?: Boolean,
 }
 
 export class ExerciseSearchModal extends React.Component<ConfirmModalProps> {
@@ -48,7 +49,9 @@ export class ExerciseSearchModal extends React.Component<ConfirmModalProps> {
 
   private selectExercise = id => {
     this.props.onSuccess(id)
-    this.props.close()
+    if (this.props.shouldClose) {
+      this.props.close()
+    }
   }
 
   public render() {

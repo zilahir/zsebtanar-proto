@@ -84,17 +84,16 @@ export const ExamPage = pipe(
         }
 
         addExercise = exercise => {
+            console.debug('exercise', exercise)
             this.setState({
-                taskList: {
-                    ...this.state.taskList,
-                    exercise,
-                }
+                taskList: [...this.state.taskList, exercise]
             })
         }
 
         openExercise() {
             this.props.openExerciseSearch({
-                onSuccess: this.addExercise
+                onSuccess: this.addExercise,
+                shouldClose: false,
             })
         }
 
@@ -150,6 +149,8 @@ export const ExamPage = pipe(
                                         placeholder="Feladatok"
                                         onClick={() => this.openExercise()}
                                         className="form-control"
+                                        value={...this.state.taskList}
+                                        // TODO: this should be tagItems with the name of the tags
                                     />
                                 </div>
                                 <div className="submit-container">
